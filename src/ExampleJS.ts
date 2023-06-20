@@ -1,3 +1,4 @@
+import 'polyfill';
 import * as em from 'ExampleModule'
 // If you uncomment this line below you can require the module in a different, more es3 style
 // If you do this you should comment out the two lines at the end of this file

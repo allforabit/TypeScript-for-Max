@@ -1,3 +1,17 @@
+import {createMachine} from './xstate/dist/xstate.cjs'
+
+const m = createMachine({
+  initial: 'x',
+  states: {
+    x: {}
+  }
+})
+
+const x = Object.assign({}, {x: 99})
+post(x.x)
+post('things')
+
+export const y = () => {}
 
 // These two functions are painfully slow ;)
 export function colorFn(x: number): number[] {
