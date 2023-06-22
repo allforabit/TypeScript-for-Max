@@ -1,18 +1,28 @@
-// rollup.config.js
-import typescript from '@rollup/plugin-typescript';
-import nodeResolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import babel from "@rollup/plugin-babel";
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import babel from '@rollup/plugin-babel';
+import pkg from './package.json' assert {type: 'json'}
+
+const extensions = [
+  '.js', '.jsx', '.ts', '.tsx',
+];
 
 export default {
-  input: 'src/ExampleJS.ts',
-  output: {
-    dir: 'dist',
+  input: './src/index.ts',
+  plugins: [
+    // Allows node_modules resolution
+    resolve({extensions}),
+    // Allow bundling cjs modules. Rollup doesn't understand cjs
+    commonjs(),
+    // Compile TypeScript/JavaScript files
+    babel({
+      extensions,
+      babelHelpers: 'bundled',
+      include: ['src/**/*'],
+    }),
+  ],
+  output: [{
+    file: pkg.main,
     format: 'cjs',
-    generatedCode: {
-      preset: 'es5',
-      arrowFunctions: false
-    }
-  },
-  plugins: [commonjs(), typescript(), nodeResolve(), babel({ babelHelpers: 'bundled' })]
+  }],
 };

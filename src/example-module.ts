@@ -1,15 +1,25 @@
-import {createMachine} from './xstate/dist/xstate.cjs'
-
-const m = createMachine({
-  initial: 'x',
-  states: {
-    x: {}
-  }
-})
-
-const x = Object.assign({}, {x: 99})
-post(x.x)
-post('things')
+// import {createMachine, interpret} from "xstate";
+//
+// const m = createMachine({
+//   initial: 'first',
+//   states: {
+//     first: {
+//       on: {
+//         go: {
+//           target: 'second'
+//         }
+//       }
+//     },
+//     second: {}
+//   }
+// })
+// //
+// const actor = interpret(m).start()
+// actor.subscribe((v) => {
+//   post(v.value)
+// })
+// //
+// actor.send({type: "go"})
 
 export const y = () => {}
 

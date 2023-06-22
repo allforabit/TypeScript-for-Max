@@ -57,4 +57,5 @@ function setRes(v: number){
 
 // .ts files with this at the end become a script usable in a [js] or [jsui] object
 let module = {};
+// @ts-ignore
 export = {};
